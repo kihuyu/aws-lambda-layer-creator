@@ -63,6 +63,7 @@ create-layer layer-name nodejs-runtime package1 [package2,…]
 #### Example
 ```bash
 create-layer request-moment-layer nodejs14.x request moment
+```
 
 ## Usage
 ### Ruby
