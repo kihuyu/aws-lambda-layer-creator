@@ -20,6 +20,8 @@ support_python_runtime=("python3.6,python3.7,python3.8,python3.9,python3.10,pyth
 
 support_node_runtime=("nodejs10.x,nodejs12.x,nodejs14.x,nodejs16.x,nodejs18.x,nodejs20.x")
 
+support_ruby_runtime=("ruby3.2,ruby3.3,ruby3.4")
+
 if [[ "${support_node_runtime[*]}" =~ "${runtime}" ]]; then
     
     installation_path="nodejs"
