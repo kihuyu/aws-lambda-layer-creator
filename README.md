@@ -1,6 +1,6 @@
 # AWS Lambda Layer Creator
 
-**Python** & **NodeJS** lambda layer creation made easy!
+**Python** & **NodeJS** & **Ruby** lambda layer creation made easy!
 
 ## Prerequisites
 - AWS CLI (Install & Configure)
@@ -63,4 +63,24 @@ create-layer layer-name nodejs-runtime package1 [package2,…]
 #### Example
 ```bash
 create-layer request-moment-layer nodejs14.x request moment
+
+## Usage
+### Ruby
+To create the layer the command should be in the specified format.
+```bash
+create-layer layer-name ruby-runtime package1 [package2,…]
+```
+- **create-layer** - Command to invoke the script to create lambda layer
+- **layer-name** - Name of the lambda layer (Please make sure to follow the lambda layer naming convention)
+- **ruby-runtime** - Ruby runtime
+- **package** - Name of the package, library that you want to install
+
+#### Supported ruby runtimes
+- ruby3.2
+- ruby3.3
+- ruby3.4
+
+#### Example
+```bash
+create-layer tzinfo-faker-layer ruby3.3 tzinfo faker
 ```
