@@ -35,6 +35,13 @@ elif [[ "${support_python_runtime[*]}" =~ "${runtime}" ]]; then
     docker_image="public.ecr.aws/sam/build-$runtime:latest"
     echo "Preparing lambda layer"
     docker run --rm -v "$host_temp_dir:/lambda-layer" -w "/lambda-layer" "$docker_image" /bin/bash -c "mkdir $installation_path && pip install $packages -t $installation_path  && zip -r lambda-layer.zip * -x '*/__pycache__/*'"
+    
+elif [[ "${support_ruby_runtime[*]}" =~ "${runtime}" ]]; then
+    
+    installation_path="ruby/gems/"
+    docker_image="public.ecr.aws/sam/build-$runtime:latest"
+    echo "Preparing lambda layer"
+    docker run --rm -v "$host_temp_dir:/lambda-layer" -w "/lambda-layer" "$docker_image" /bin/bash -c "mkdir -p $installation_path && bundle config --global silence_root_warning 1 && bundle config set --local path 'vendor/bundle' && bundle init && bundle add $packages && cp -r vendor/bundle/ruby/* $installation_path && zip -r lambda-layer.zip *"
 
 else
     echo "Invalid runtime"
